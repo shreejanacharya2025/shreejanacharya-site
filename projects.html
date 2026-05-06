@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Shreejan Acharya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><i class="fas fa-code"></i> Shreejan<span class="logo-dot">.</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div style="display:flex; align-items:center;">
+                <a href="login.html" class="btn" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <button id="logoutBtn" class="btn" style="display:none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                <div class="nav-toggle" id="navToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <h2><i class="fas fa-folder-open" style="color:var(--accent);"></i> Projects</h2>
+        <p style="color:var(--text-secondary); margin-bottom:2rem;">Admin can upload projects after login.</p>
+
+        <!-- Upload form (only visible to admin) -->
+        <div class="project-form" id="uploadForm" style="display:none;">
+            <h3><i class="fas fa-cloud-upload-alt"></i> Add New Project</h3>
+            <div class="form-group"><label>Title</label><input type="text" id="projTitle"></div>
+            <div class="form-group"><label>Description</label><textarea id="projDesc" rows="2"></textarea></div>
+            <div class="form-group"><label>Image URL</label><input type="text" id="projImage" placeholder="https://..."></div>
+            <div class="form-group"><label>ZIP URL</label><input type="text" id="projZip" placeholder="optional"></div>
+            <button class="btn btn-primary" id="addProjectBtn"><i class="fas fa-plus"></i> Add Project</button>
+        </div>
+
+        <div class="projects-grid" id="projectsContainer"></div>
+    </div>
+    <script src="web.js"></script>
+</body>
+</html>

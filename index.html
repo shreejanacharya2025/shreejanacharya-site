@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shreejan Acharya | IT Officer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><i class="fas fa-code"></i> Shreejan<span class="logo-dot">.</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div style="display:flex; align-items:center;">
+                <a href="login.html" class="btn" id="loginBtn" style="display:inline-flex;"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <button id="logoutBtn" class="btn" style="display:none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                <div class="nav-toggle" id="navToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-text">
+                <span class="tag" style="margin-bottom:1rem;">IT Officer & Developer</span>
+                <h1>Hello, I'm <span class="highlight">Shreejan Acharya</span></h1>
+                <p style="color:var(--text-secondary); margin:1.5rem 0;">Web Dev · IT Support · Networking · Web Apps<br>Based in Kathmandu, Nepal 🇳🇵</p>
+                <div style="display:flex; gap:1rem;">
+                    <a href="projects.html" class="btn btn-primary"><i class="fas fa-briefcase"></i> My Work</a>
+                    <a href="contact.html" class="btn"><i class="fas fa-paper-plane"></i> Hire Me</a>
+                </div>
+            </div>
+            <div class="hero-image" style="text-align:center;">
+                <div class="avatar"><i class="fas fa-user-astronaut"></i></div>
+                <div class="service-tags">
+                    <span class="tag">Web Development</span>
+                    <span class="tag">IT Support</span>
+                    <span class="tag">Networking</span>
+                    <span class="tag">Web Applications</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="web.js"></script>
+</body>
+</html>

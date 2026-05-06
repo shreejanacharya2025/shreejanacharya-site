@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Shreejan Acharya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="auth-form" id="authForm">
+        <h2 id="formTitle"><i class="fas fa-lock"></i> Sign In</h2>
+        <div id="nameField" style="display:none;">
+            <input type="text" id="regName" placeholder="Full Name">
+        </div>
+        <input type="email" id="email" placeholder="Email address">
+        <input type="password" id="password" placeholder="Password">
+        <button class="btn btn-primary" id="submitAuth" style="width:100%; justify-content:center;">Sign In</button>
+        <p class="toggle-link" id="toggleForm">Don't have an account? <span style="color:var(--accent);">Sign Up</span></p>
+        <p style="text-align:center; margin-top:1rem; color:var(--text-secondary);">
+            Admin: shreejan.acharya2025@gmail.com / 6969
+        </p>
+        <p style="text-align:center;"><a href="index.html" style="color:var(--accent);">← Back to Home</a></p>
+    </div>
+
+    <script>
+        let isSignUp = false;
+        const formTitle = document.getElementById('formTitle');
+        const nameField = document.getElementById('nameField');
+        const submitBtn = document.getElementById('submitAuth');
+        const toggleLink = document.getElementById('toggleForm');
+        const emailInp = document.getElementById('email');
+        const passInp = document.getElementById('password');
+        const regName = document.getElementById('regName');
+
+        toggleLink.addEventListener('click', () => {
+            isSignUp = !isSignUp;
+            if (isSignUp) {
+                formTitle.innerHTML = '<i class="fas fa-user-plus"></i> Sign Up';
+                nameField.style.display = 'block';
+                submitBtn.textContent = 'Sign Up';
+                toggleLink.innerHTML = 'Already have an account? <span style="color:var(--accent);">Sign In</span>';
+            } else {
+                formTitle.innerHTML = '<i class="fas fa-lock"></i> Sign In';
+                nameField.style.display = 'none';
+                submitBtn.textContent = 'Sign In';
+                toggleLink.innerHTML = 'Don\'t have an account? <span style="color:var(--accent);">Sign Up</span>';
+            }
+        });
+
+        submitBtn.addEventListener('click', () => {
+            const email = emailInp.value.trim();
+            const pass = passInp.value.trim();
+            if (!email || !pass) { alert('Please fill all fields'); return; }
+
+            if (isSignUp) {
+                const name = regName.value.trim();
+                if (!name) { alert('Name required'); return; }
+                if (signUp(name, email, pass)) {
+                    alert('Account created!');
+                    window.location.href = 'index.html';
+                }
+            } else {
+                if (signIn(email, pass)) {
+                    alert('Login successful!');
+                    window.location.href = 'index.html';
+                } else {
+                    alert('Invalid email or password.');
+                }
+            }
+        });
+    </script>
+    <script src="web.js"></script>
+</body>
+</html>
