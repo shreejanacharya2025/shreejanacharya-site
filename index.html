@@ -3,50 +3,518 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shreejan Acharya | IT Officer</title>
+    <title>Shreejan Acharya · IT Officer</title>
+    <meta name="description" content="Shreejan Acharya – IT Officer in Kathmandu, Nepal. Web Dev, IT Support, Networking, Web Apps.">
+    <meta name="keywords" content="IT officer, web development, IT support, networking, Kathmandu, Nepal, Shreejan Acharya">
+    <meta property="og:title" content="Shreejan Acharya | IT Officer">
+    <meta property="og:description" content="Web Dev · IT Support · Networking · Web Apps. Based in Kathmandu.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --bg: #0f0f14;
+            --surface: rgba(25, 25, 35, 0.55);
+            --border: rgba(255, 255, 255, 0.08);
+            --text: #e2e2f0;
+            --text-secondary: #a0a0c0;
+            --accent: #7c8cf8;
+            --accent-light: #a8b4ff;
+            --radius: 20px;
+            --blur: 18px;
+            --footer-bg: rgba(15, 15, 20, 0.7);
+        }
+        body.light-mode {
+            --bg: #f0f2f5;
+            --surface: rgba(255, 255, 255, 0.75);
+            --border: rgba(0, 0, 0, 0.08);
+            --text: #1a1a2e;
+            --text-secondary: #4a4a6a;
+            --accent: #4f5bd5;
+            --accent-light: #7c8cf8;
+            --footer-bg: rgba(240, 242, 245, 0.9);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: radial-gradient(ellipse at 30% 40%, #1e1e30 0%, #0b0b16 70%);
+            color: var(--text);
+            line-height: 1.6;
+            min-height: 100vh;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.light-mode {
+            background: radial-gradient(ellipse at 30% 40%, #e0e5ff 0%, #f0f2f5 70%);
+        }
+        .navbar {
+            position: fixed; top:20px; left:50%; transform:translateX(-50%);
+            width: calc(100% - 40px); max-width:1100px;
+            background: rgba(18,18,28,0.5); backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border:1px solid var(--border); border-radius:60px;
+            padding:0.7rem 2rem; z-index:1000; transition: background 0.3s;
+        }
+        body.light-mode .navbar { background: rgba(255,255,255,0.6); }
+        .nav-container { display:flex; justify-content:space-between; align-items:center; }
+        .nav-logo { font-size:1.6rem; font-weight:700; color:var(--text); text-decoration:none; display:flex; align-items:center; gap:8px; }
+        .logo-dot { color:var(--accent); }
+        .nav-menu { display:flex; list-style:none; gap:2rem; background:rgba(255,255,255,0.03); padding:0.5rem 1.8rem; border-radius:40px; backdrop-filter:blur(10px); align-items:center; }
+        .nav-link { color:var(--text-secondary); text-decoration:none; font-weight:500; font-size:0.95rem; padding:0.3rem 0; border-bottom:2px solid transparent; transition:0.2s; cursor:pointer; background:none; border-left:none; border-right:none; border-top:none; font-family:inherit; }
+        .nav-link.active, .nav-link:hover { color:var(--text); border-bottom-color:var(--accent); }
+        .nav-toggle { display:none; flex-direction:column; cursor:pointer; }
+        .bar { width:25px; height:2px; background:var(--text); margin:4px 0; border-radius:5px; }
+        .btn {
+            display:inline-flex; align-items:center; gap:8px;
+            background:rgba(255,255,255,0.08); backdrop-filter:blur(10px);
+            border:1px solid rgba(255,255,255,0.15); color:var(--text);
+            padding:0.7rem 1.8rem; border-radius:40px; font-weight:500;
+            text-decoration:none; transition:all 0.2s; cursor:pointer;
+            font-family:inherit; font-size:0.95rem;
+        }
+        .btn-primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+        .btn:hover { background:rgba(255,255,255,0.15); }
+        .btn-primary:hover { background:var(--accent-light); }
+        .container {
+            max-width:1000px; margin:120px auto 40px;
+            background:var(--surface); backdrop-filter:blur(var(--blur));
+            -webkit-backdrop-filter:blur(var(--blur));
+            border:1px solid var(--border); border-radius:var(--radius);
+            padding:2.8rem 2.5rem; box-shadow:0 30px 50px rgba(0,0,0,0.3);
+            transition:background 0.3s;
+        }
+        .section { display:none; }
+        .section.active { display:block; }
+        h1,h2,h3 { color:var(--text); font-weight:600; }
+        .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:center; }
+        .hero-text h1 { font-size:3.2rem; line-height:1.2; }
+        .highlight { background:linear-gradient(135deg, var(--accent), #c084fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+        .avatar { width:160px; height:160px; background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:4rem; border:1px solid rgba(255,255,255,0.15); }
+        .service-tags { display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1.8rem; }
+        .tag { background:rgba(255,255,255,0.07); backdrop-filter:blur(8px); padding:0.5rem 1.2rem; border-radius:30px; font-size:0.9rem; border:1px solid rgba(255,255,255,0.1); cursor:pointer; color:var(--text); text-decoration:none; transition:0.2s; }
+        .tag:hover { background:var(--accent); border-color:var(--accent); }
+        .services-section { margin-top:4rem; }
+        .service-item { background:rgba(255,255,255,0.03); border-radius:20px; padding:2rem; margin-bottom:2rem; backdrop-filter:blur(12px); border:1px solid var(--border); display:flex; gap:2rem; align-items:center; }
+        .service-item img { width:200px; height:160px; object-fit:cover; border-radius:16px; }
+        .blog-grid { display:grid; gap:2rem; margin-top:2rem; }
+        .blog-card { background:rgba(255,255,255,0.03); border-radius:20px; padding:2rem; backdrop-filter:blur(12px); border:1px solid var(--border); }
+        .comment-section { margin-top:2.5rem; background:rgba(255,255,255,0.02); backdrop-filter:blur(14px); border-radius:20px; padding:1.8rem; border:1px solid rgba(255,255,255,0.06); }
+        .comment-item { background:rgba(255,255,255,0.04); border-radius:14px; padding:1rem; margin-bottom:0.8rem; border-left:3px solid var(--accent); backdrop-filter:blur(6px); }
+        .footer { background:var(--footer-bg); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-top:1px solid var(--border); padding:2rem; text-align:center; margin-top:4rem; color:var(--text-secondary); }
+        .footer .social-links a { color:var(--text-secondary); margin:0 0.8rem; font-size:1.4rem; transition:0.2s; }
+        .footer .social-links a:hover { color:var(--accent); }
+        #backToTop { position:fixed; bottom:30px; right:30px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:50px; height:50px; font-size:1.4rem; cursor:pointer; display:none; z-index:999; }
+        #backToTop.show { display:block; }
+        .modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); backdrop-filter:blur(12px); display:none; align-items:center; justify-content:center; z-index:2000; }
+        .modal { background:var(--surface); backdrop-filter:blur(30px); border:1px solid var(--border); border-radius:24px; padding:2.5rem; width:90%; max-width:400px; color:var(--text); }
+        .modal input { width:100%; padding:0.9rem; margin:0.7rem 0; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; color:var(--text); }
+        .delete-btn { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffaaaa; padding:0.3rem 1rem; border-radius:20px; cursor:pointer; }
+        @media (max-width:768px) {
+            .hero-grid { grid-template-columns:1fr; }
+            .nav-menu { position:fixed; left:-100%; top:90px; flex-direction:column; background:rgba(15,15,20,0.8); backdrop-filter:blur(30px); width:100%; padding:2rem; transition:0.3s; border-radius:0; }
+            .nav-menu.active { left:0; }
+            .nav-toggle { display:flex; }
+            .service-item { flex-direction:column; }
+            .service-item img { width:100%; }
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="nav-logo"><i class="fas fa-code"></i> Shreejan<span class="logo-dot">.</span></a>
+            <a class="nav-logo" onclick="showSection('home')"><i class="fas fa-code"></i> Shreejan<span class="logo-dot">.</span></a>
             <ul class="nav-menu" id="navMenu">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="projects.html" class="nav-link">Projects</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><button class="nav-link active" onclick="showSection('home')">Home</button></li>
+                <li><button class="nav-link" onclick="showSection('about')">About</button></li>
+                <li><button class="nav-link" onclick="showSection('projects')">Projects</button></li>
+                <li><button class="nav-link" onclick="showSection('blog')">Blog</button></li>
+                <li><button class="nav-link" onclick="showSection('contact')">Contact</button></li>
+                <li id="dashboardLi" style="display:none;"><button class="nav-link" onclick="showSection('dashboard')">Dashboard</button></li>
             </ul>
             <div style="display:flex; align-items:center;">
-                <a href="login.html" class="btn" id="loginBtn" style="display:inline-flex;"><i class="fas fa-sign-in-alt"></i> Login</a>
-                <button id="logoutBtn" class="btn" style="display:none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                <button id="darkModeToggle" class="btn"><i class="fas fa-moon"></i> Dark</button>
+                <button id="loginBtn" class="btn" style="margin-left:0.5rem;" onclick="openLogin()"><i class="fas fa-sign-in-alt"></i> Login</button>
+                <button id="logoutBtn" class="btn" style="display:none;" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
                 <div class="nav-toggle" id="navToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
             </div>
         </div>
     </nav>
 
-    <div class="container">
+    <!-- HOME -->
+    <div id="home" class="section active container">
         <div class="hero-grid">
             <div class="hero-text">
-                <span class="tag" style="margin-bottom:1rem;">IT Officer & Developer</span>
+                <span class="tag">IT Officer & Developer</span>
                 <h1>Hello, I'm <span class="highlight">Shreejan Acharya</span></h1>
                 <p style="color:var(--text-secondary); margin:1.5rem 0;">Web Dev · IT Support · Networking · Web Apps<br>Based in Kathmandu, Nepal 🇳🇵</p>
                 <div style="display:flex; gap:1rem;">
-                    <a href="projects.html" class="btn btn-primary"><i class="fas fa-briefcase"></i> My Work</a>
-                    <a href="contact.html" class="btn"><i class="fas fa-paper-plane"></i> Hire Me</a>
+                    <button class="btn btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'});"><i class="fas fa-briefcase"></i> My Services</button>
+                    <button class="btn" onclick="showSection('contact')"><i class="fas fa-paper-plane"></i> Hire Me</button>
+                </div>
+                <div class="service-tags">
+                    <a class="tag" href="#web-dev" onclick="document.getElementById('web-dev').scrollIntoView({behavior:'smooth'});">Web Development</a>
+                    <a class="tag" href="#it-support" onclick="document.getElementById('it-support').scrollIntoView({behavior:'smooth'});">IT Support</a>
+                    <a class="tag" href="#networking" onclick="document.getElementById('networking').scrollIntoView({behavior:'smooth'});">Networking</a>
+                    <a class="tag" href="#web-apps" onclick="document.getElementById('web-apps').scrollIntoView({behavior:'smooth'});">Web Applications</a>
                 </div>
             </div>
-            <div class="hero-image" style="text-align:center;">
-                <div class="avatar"><i class="fas fa-user-astronaut"></i></div>
-                <div class="service-tags">
-                    <span class="tag">Web Development</span>
-                    <span class="tag">IT Support</span>
-                    <span class="tag">Networking</span>
-                    <span class="tag">Web Applications</span>
+            <div class="hero-image"><div class="avatar"><i class="fas fa-user-astronaut"></i></div></div>
+        </div>
+        <div class="services-section" id="services">
+            <h2 style="margin-bottom:2rem;"><i class="fas fa-tools" style="color:var(--accent);"></i> What I Do</h2>
+            <div class="service-item" id="web-dev">
+                <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&fit=crop" alt="Web Development">
+                <div><h3>Web Development</h3><p>Custom responsive websites, landing pages, and full‑stack solutions using HTML, CSS, JavaScript, React, and modern frameworks. I build fast, accessible, and visually appealing websites tailored to your brand.</p></div>
+            </div>
+            <div class="service-item" id="it-support">
+                <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&fit=crop" alt="IT Support">
+                <div><h3>IT Support</h3><p>Remote & on‑site technical support, hardware/software troubleshooting, system maintenance, and network setup. I ensure your IT infrastructure runs smoothly so you can focus on your business.</p></div>
+            </div>
+            <div class="service-item" id="networking">
+                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&fit=crop" alt="Networking">
+                <div><h3>Networking</h3><p>Design and configuration of LAN/WAN networks, security firewalls, VPNs and cloud networking. Certified in Cisco and MikroTik technologies to keep your data safe and flowing. i can also heps on set floor plan and API`s.</p></div>
+            </div>
+            <div class="service-item" id="web-apps">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&fit=crop" alt="Web Applications">
+                <div><h3>Web Applications</h3><p>Custom web apps, dashboards, and automation tools built with modern frameworks. From idea to deployment, I deliver scalable and secure solutions that solve real problems.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div id="about" class="section container">
+        <h2><i class="fas fa-user-circle" style="color:var(--accent);"></i> About Me</h2>
+        <p style="margin:1.5rem 0; color:var(--text-secondary);">I'm <strong>Shreejan Acharya</strong>, an IT Officer in Kathmandu, Nepal. I offer web development, IT support, networking, and custom web application services.</p>
+        <div class="comment-section">
+            <h3><i class="far fa-comments"></i> Comments</h3>
+            <div id="commentsList"></div>
+            <div style="display:flex; gap:0.8rem; margin-top:1.5rem; flex-wrap:wrap;">
+                <input type="text" id="commentName" placeholder="Your name" style="flex:1; background:rgba(20,20,28,0.5); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.1); border-radius:30px; padding:0.7rem 1.2rem; color:var(--text);">
+                <input type="text" id="commentMsg" placeholder="Write a comment..." style="flex:2; background:rgba(20,20,28,0.5); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.1); border-radius:30px; padding:0.7rem 1.2rem; color:var(--text);">
+                <button class="btn btn-primary" id="postCommentBtn"><i class="fas fa-paper-plane"></i> Post</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div id="projects" class="section container">
+        <h2><i class="fas fa-folder-open" style="color:var(--accent);"></i> Projects</h2>
+        <div class="project-form" id="uploadForm" style="display:none;">
+            <h3><i class="fas fa-cloud-upload-alt"></i> Add Project</h3>
+            <input type="text" id="projTitle" placeholder="Title"><br>
+            <textarea id="projDesc" rows="2" placeholder="Description"></textarea><br>
+            <input type="text" id="projImage" placeholder="Image URL (optional)"><br>
+            <input type="text" id="projZip" placeholder="ZIP URL (optional)"><br>
+            <button class="btn btn-primary" id="addProjectBtn">Add Project</button>
+        </div>
+        <div id="projectsContainer"></div>
+    </div>
+
+    <!-- BLOG -->
+    <div id="blog" class="section container">
+        <h2><i class="fas fa-blog" style="color:var(--accent);"></i> Articles</h2>
+        <div id="blogForm" style="display:none; margin-bottom:2rem;">
+            <input type="text" id="blogTitle" placeholder="Title"><br>
+            <textarea id="blogContent" rows="5" placeholder="Content"></textarea><br>
+            <button class="btn btn-primary" id="addBlogBtn">Publish</button>
+        </div>
+        <div id="blogContainer"></div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact" class="section container">
+        <h2><i class="fas fa-address-card" style="color:var(--accent);"></i> Contact</h2>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+            <div>
+                <h3>Send a Message</h3>
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="text" name="name" placeholder="Name" required><br>
+                    <input type="email" name="email" placeholder="Email" required><br>
+                    <textarea name="message" rows="5" placeholder="Message" required></textarea><br>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </form>
+            </div>
+            <div>
+                <h3>Direct Contact</h3>
+                <p><i class="fas fa-user"></i> <strong>Shreejan Acharya</strong></p>
+                <p><i class="fas fa-phone-alt"></i> +977 - 9845277740</p>
+                <p><i class="fas fa-envelope"></i> aacharyashreejan@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+                <div style="margin-top:1.5rem;">
+                    <a href="https://wa.me/9779818864360" target="_blank" class="btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://www.facebook.com/shreejan.fb/about/" target="_blank" class="btn"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/shreejan.acharya" target="_blank" class="btn"><i class="fab fa-instagram"></i></a>
+                    <a href="https://np.linkedin.com/in/shreejan-acharya-107779344" target="_blank" class="btn"><i class="fab fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
     </div>
-    <script src="web.js"></script>
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="section container">
+        <h2><i class="fas fa-tachometer-alt" style="color:var(--accent);"></i> Dashboard</h2>
+        <p>Admin only</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:1rem; margin:1.5rem 0;">
+            <div class="tag">Projects: <strong id="statProjects">0</strong></div>
+            <div class="tag">Comments: <strong id="statComments">0</strong></div>
+            <div class="tag">Articles: <strong id="statBlog">0</strong></div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://wa.me/9779818864360" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.facebook.com/shreejan.fb/about/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/shreejan.acharya" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://np.linkedin.com/in/shreejan-acharya-107779344" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:aacharyashreejan@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p style="margin-top:1rem;">&copy; 2025 Shreejan Acharya. All rights reserved.</p>
+    </footer>
+
+    <button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Login Modal -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal">
+            <span style="float:right; cursor:pointer; font-size:1.8rem;" onclick="closeLogin()">&times;</span>
+            <h2 id="formTitle"><i class="fas fa-lock"></i> Sign In</h2>
+            <div id="nameField" style="display:none;"><input type="text" id="regName" placeholder="Full Name"></div>
+            <input type="email" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button class="btn btn-primary" id="submitAuth" style="width:100%;">Sign In</button>
+            <p style="text-align:center; margin-top:1rem; cursor:pointer;" id="toggleFormLink">Don't have an account? <span style="color:var(--accent);">Sign Up</span></p>
+            <p style="text-align:center; font-size:0.8rem;">having trouble?   send e-mail on : aacharyashreejan@gmail.com </p>
+        </div>
+    </div>
+
+    <script>
+        // ---------- GLOBAL STATE ----------
+        const ADMIN_EMAIL = "shreejan.acharya2025@gmail.com";
+        const ADMIN_PASSWORD = "password6969";
+
+        // Ensure admin exists
+        (function() {
+            let users = JSON.parse(localStorage.getItem('site_users') || '[]');
+            if (!users.some(u => u.email === ADMIN_EMAIL)) {
+                users.push({ name: "Shreejan Acharya", email: ADMIN_EMAIL, password: ADMIN_PASSWORD });
+                localStorage.setItem('site_users', JSON.stringify(users));
+            }
+        })();
+
+        function getUsers() { return JSON.parse(localStorage.getItem('site_users') || '[]'); }
+        function saveUsers(u) { localStorage.setItem('site_users', JSON.stringify(u)); }
+        function getCurrentUser() { return JSON.parse(sessionStorage.getItem('currentUser') || 'null'); }
+        function setCurrentUser(u) { sessionStorage.setItem('currentUser', JSON.stringify(u)); }
+        function isAdmin() { const u = getCurrentUser(); return u && u.email === ADMIN_EMAIL; }
+
+        function logout() {
+            sessionStorage.removeItem('currentUser');
+            updateUI();
+            showSection('home');
+        }
+
+        // ---------- DARK MODE ----------
+        function applyTheme(mode) {
+            if (mode === 'light') document.body.classList.add('light-mode');
+            else document.body.classList.remove('light-mode');
+            localStorage.setItem('theme', mode);
+            document.getElementById('darkModeToggle').innerHTML = mode==='light' ? '<i class="fas fa-moon"></i> Dark' : '<i class="fas fa-sun"></i> Light';
+        }
+        document.getElementById('darkModeToggle').addEventListener('click', ()=>{
+            applyTheme(document.body.classList.contains('light-mode') ? 'dark' : 'light');
+        });
+        applyTheme(localStorage.getItem('theme') || 'dark');
+
+        // ---------- SECTION NAVIGATION ----------
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.querySelector(`.nav-link[onclick="showSection('${id}')"]`)?.classList.add('active');
+            window.scrollTo({top:0, behavior:'smooth'});
+            document.getElementById('navMenu').classList.remove('active');
+        }
+
+        // Mobile toggle
+        document.getElementById('navToggle').addEventListener('click', ()=>{
+            document.getElementById('navMenu').classList.toggle('active');
+        });
+
+        // Back to top
+        window.addEventListener('scroll', ()=>{
+            document.getElementById('backToTop').classList.toggle('show', window.scrollY > 400);
+        });
+        document.getElementById('backToTop').addEventListener('click', ()=>{
+            window.scrollTo({top:0, behavior:'smooth'});
+        });
+
+        // Update UI based on login
+        function updateUI() {
+            const user = getCurrentUser();
+            document.getElementById('loginBtn').style.display = user ? 'none' : 'inline-flex';
+            document.getElementById('logoutBtn').style.display = user ? 'inline-flex' : 'none';
+            document.getElementById('dashboardLi').style.display = isAdmin() ? 'list-item' : 'none';
+            document.getElementById('uploadForm').style.display = isAdmin() ? 'block' : 'none';
+            document.getElementById('blogForm').style.display = isAdmin() ? 'block' : 'none';
+            if (user) {
+                document.getElementById('logoutBtn').innerHTML = `<i class="fas fa-sign-out-alt"></i> Logout (${user.name})`;
+            }
+        }
+
+        // ---------- AUTH ----------
+        function signUp(name, email, password) {
+            const users = getUsers();
+            if (users.find(u => u.email === email)) { alert('Email already registered.'); return false; }
+            users.push({ name, email, password });
+            saveUsers(users);
+            setCurrentUser({ name, email });
+            return true;
+        }
+        function signIn(email, password) {
+            const users = getUsers();
+            const user = users.find(u => u.email === email && u.password === password);
+            if (user) { setCurrentUser({ name: user.name, email: user.email }); return true; }
+            return false;
+        }
+
+        let isSignUpMode = false;
+        document.getElementById('toggleFormLink').addEventListener('click', ()=>{
+            isSignUpMode = !isSignUpMode;
+            document.getElementById('formTitle').innerHTML = isSignUpMode ? '<i class="fas fa-user-plus"></i> Sign Up' : '<i class="fas fa-lock"></i> Sign In';
+            document.getElementById('nameField').style.display = isSignUpMode ? 'block' : 'none';
+            document.getElementById('submitAuth').textContent = isSignUpMode ? 'Sign Up' : 'Sign In';
+            document.getElementById('toggleFormLink').innerHTML = isSignUpMode ? 'Already have an account? <span style="color:var(--accent);">Sign In</span>' : 'Don\'t have an account? <span style="color:var(--accent);">Sign Up</span>';
+        });
+
+        document.getElementById('submitAuth').addEventListener('click', ()=>{
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            if (!email || !password) { alert('Please fill all fields.'); return; }
+            if (isSignUpMode) {
+                const name = document.getElementById('regName').value.trim();
+                if (!name) { alert('Name required'); return; }
+                if (signUp(name, email, password)) {
+                    alert('Account created!');
+                    closeLogin();
+                    updateUI();
+                }
+            } else {
+                if (signIn(email, password)) {
+                    alert('Login successful!');
+                    closeLogin();
+                    updateUI();
+                } else {
+                    alert('Invalid credentials.');
+                }
+            }
+        });
+
+        function openLogin() { document.getElementById('loginModal').style.display = 'flex'; }
+        function closeLogin() { document.getElementById('loginModal').style.display = 'none'; }
+        window.addEventListener('click', (e)=>{ if (e.target === document.getElementById('loginModal')) closeLogin(); });
+
+        // ---------- PROJECTS ----------
+        function loadProjects() { return JSON.parse(localStorage.getItem('site_projects') || '[]'); }
+        function saveProjects(p) { localStorage.setItem('site_projects', JSON.stringify(p)); }
+        function renderProjects() {
+            const container = document.getElementById('projectsContainer');
+            const projects = loadProjects();
+            container.innerHTML = '';
+            if (projects.length===0) { container.innerHTML = '<p>No projects yet.</p>'; return; }
+            projects.forEach((p, i) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+                card.style.cssText = 'background:rgba(35,35,50,0.4); backdrop-filter:blur(12px); border-radius:20px; padding:1.2rem; margin-bottom:1rem;';
+                card.innerHTML = `
+                    <h3>${p.title}</h3>
+                    <p>${p.description||''}</p>
+                    ${p.image ? `<img src="${p.image}" style="max-width:100%; border-radius:12px;">` : ''}
+                    ${p.zip ? `<a href="${p.zip}" target="_blank">Download ZIP</a>` : ''}
+                    ${isAdmin() ? `<button class="delete-btn" onclick="deleteProject(${i})">Delete</button>` : ''}
+                `;
+                container.appendChild(card);
+            });
+        }
+        window.deleteProject = function(i) {
+            const p = loadProjects(); p.splice(i,1); saveProjects(p); renderProjects();
+        };
+        document.getElementById('addProjectBtn').addEventListener('click', ()=>{
+            const title = document.getElementById('projTitle').value.trim();
+            if (!title) { alert('Title required'); return; }
+            const newProj = {
+                title,
+                description: document.getElementById('projDesc').value.trim(),
+                image: document.getElementById('projImage').value.trim(),
+                zip: document.getElementById('projZip').value.trim()
+            };
+            const p = loadProjects(); p.push(newProj); saveProjects(p);
+            document.getElementById('projTitle').value = '';
+            document.getElementById('projDesc').value = '';
+            document.getElementById('projImage').value = '';
+            document.getElementById('projZip').value = '';
+            renderProjects();
+        });
+
+        // ---------- BLOG ----------
+        function loadBlog() { return JSON.parse(localStorage.getItem('site_blog') || '[]'); }
+        function saveBlog(b) { localStorage.setItem('site_blog', JSON.stringify(b)); }
+        function renderBlog() {
+            const container = document.getElementById('blogContainer');
+            const posts = loadBlog();
+            container.innerHTML = '';
+            if (posts.length===0) { container.innerHTML = '<p>No articles yet.</p>'; return; }
+            posts.reverse().forEach((post, i) => {
+                const div = document.createElement('div');
+                div.className = 'blog-card';
+                div.innerHTML = `<h3>${post.title}</h3><small>${post.date}</small><p>${post.content}</p>${isAdmin() ? `<button class="delete-btn" onclick="deleteBlog(${i})">Delete</button>` : ''}`;
+                container.appendChild(div);
+            });
+        }
+        window.deleteBlog = function(i) {
+            const b = loadBlog(); b.splice(i,1); saveBlog(b); renderBlog();
+        };
+        document.getElementById('addBlogBtn').addEventListener('click', ()=>{
+            const title = document.getElementById('blogTitle').value.trim();
+            const content = document.getElementById('blogContent').value.trim();
+            if (!title || !content) { alert('Title and content required'); return; }
+            const b = loadBlog(); b.push({title, content, date: new Date().toLocaleDateString()}); saveBlog(b);
+            document.getElementById('blogTitle').value = '';
+            document.getElementById('blogContent').value = '';
+            renderBlog();
+        });
+
+        // ---------- COMMENTS ----------
+        function loadComments() { return JSON.parse(localStorage.getItem('site_comments') || '[]'); }
+        function saveComments(c) { localStorage.setItem('site_comments', JSON.stringify(c)); }
+        function renderComments() {
+            const list = document.getElementById('commentsList');
+            const comments = loadComments();
+            list.innerHTML = '';
+            if (comments.length===0) { list.innerHTML = '<p>No comments yet.</p>'; return; }
+            comments.forEach(c => {
+                const div = document.createElement('div');
+                div.className = 'comment-item';
+                div.innerHTML = `<strong>${c.name||'Anonymous'}</strong> <small>${c.date}</small><p>${c.message}</p>`;
+                list.appendChild(div);
+            });
+        }
+        document.getElementById('postCommentBtn').addEventListener('click', ()=>{
+            const name = document.getElementById('commentName').value.trim();
+            const msg = document.getElementById('commentMsg').value.trim();
+            if (!msg) { alert('Write a comment'); return; }
+            const c = loadComments(); c.push({name: name||'Anonymous', message: msg, date: new Date().toLocaleString()}); saveComments(c);
+            document.getElementById('commentName').value = '';
+            document.getElementById('commentMsg').value = '';
+            renderComments();
+        });
+
+        // Initial render & UI update
+        updateUI();
+        renderProjects();
+        renderBlog();
+        renderComments();
+        // Dashboard stats
+        document.getElementById('statProjects').textContent = loadProjects().length;
+        document.getElementById('statComments').textContent = loadComments().length;
+        document.getElementById('statBlog').textContent = loadBlog().length;
+    </script>
 </body>
 </html>
