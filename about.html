@@ -1,1 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Shreejan Acharya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><i class="fas fa-code"></i> Shreejan<span class="logo-dot">.</span></a>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="about.html" class="nav-link active">About</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div style="display:flex; align-items:center;">
+                <a href="login.html" class="btn" id="loginBtn"><i class="fas fa-sign-in-alt"></i> Login</a>
+                <button id="logoutBtn" class="btn" style="display:none;"><i class="fas fa-sign-out-alt"></i> Logout</button>
+                <div class="nav-toggle" id="navToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
+            </div>
+        </div>
+    </nav>
 
+    <div class="container">
+        <h2><i class="fas fa-user-circle" style="color:var(--accent);"></i> About Me</h2>
+        <p style="margin:1.5rem 0; color:var(--text-secondary);">
+            I'm <strong>Shreejan Acharya</strong>, an IT Officer based in Kathmandu, Nepal. I offer web development, IT support, networking, and custom web application services. I believe in clean, maintainable code and systems that just work.
+        </p>
+        <p style="color:var(--text-secondary);">Let's collaborate – I'm open to freelance and interesting projects.</p>
+
+        <div class="comment-section">
+            <h3><i class="far fa-comments"></i> Comments</h3>
+            <div id="commentsList"></div>
+            <div style="display:flex; gap:0.8rem; margin-top:1.5rem; flex-wrap:wrap;">
+                <input type="text" id="commentName" placeholder="Your name" style="flex:1; background:rgba(20,20,28,0.5); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.1); border-radius:30px; padding:0.7rem 1.2rem; color:#fff;">
+                <input type="text" id="commentMsg" placeholder="Write a comment..." style="flex:2; background:rgba(20,20,28,0.5); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.1); border-radius:30px; padding:0.7rem 1.2rem; color:#fff;">
+                <button class="btn btn-primary" id="postCommentBtn"><i class="fas fa-paper-plane"></i> Post</button>
+            </div>
+        </div>
+    </div>
+    <script src="web.js"></script>
+</body>
+</html>
