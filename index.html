@@ -127,7 +127,8 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <a class="nav-logo" onclick="showSection('home')"><i class="fas fa-code"></i> Shreejan<span class="logo-dot">.</span></a>
+            <!-- ✅ Icon changed from </> (code) to a simple laptop icon -->
+            <a class="nav-logo" onclick="showSection('home')"><i class="fas fa-laptop"></i> Shreejan<span class="logo-dot">.</span></a>
             <ul class="nav-menu" id="navMenu">
                 <li><button class="nav-link active" onclick="showSection('home')">Home</button></li>
                 <li><button class="nav-link" onclick="showSection('about')">About</button></li>
@@ -256,7 +257,7 @@
         </div>
     </div>
 
-    <!-- DASHBOARD (Admin only) -->
+    <!-- DASHBOARD -->
     <div id="dashboard" class="section container">
         <h2><i class="fas fa-tachometer-alt" style="color:var(--accent);"></i> Dashboard</h2>
         <p>Welcome, Shreejan! Here's an overview of your site's activity.</p>
@@ -287,7 +288,7 @@
 
     <button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
 
-    <!-- Login Modal -->
+    <!-- Login Modal (no admin hints) -->
     <div class="modal-overlay" id="loginModal">
         <div class="modal">
             <span style="float:right; cursor:pointer; font-size:1.8rem;" onclick="closeLogin()">&times;</span>
@@ -297,7 +298,7 @@
             <input type="password" id="password" placeholder="Password">
             <button class="btn btn-primary" id="submitAuth" style="width:100%;">Sign In</button>
             <p style="text-align:center; margin-top:0.8rem; cursor:pointer;" id="toggleFormLink">Don't have an account? <span style="color:var(--accent);">Sign Up</span></p>
-            <p style="text-align:center; font-size:0.8rem;">Admin: shreejan.acharya2025@gmail.com / 6969</p>
+            <!-- ✅ Admin credentials line completely removed -->
         </div>
     </div>
 
@@ -347,6 +348,11 @@
             if (targetLink) targetLink.classList.add('active');
             window.scrollTo({top:0, behavior:'smooth'});
             document.getElementById('navMenu').classList.remove('active');
+
+            // ✅ Re-render messages every time dashboard is opened
+            if (id === 'dashboard') {
+                renderMessages();
+            }
         }
 
         document.getElementById('navToggle').addEventListener('click', ()=>{
@@ -414,7 +420,7 @@
                     alert('Login successful!');
                     closeLogin();
                     updateUI();
-                    // Refresh messages if dashboard is active
+                    // If dashboard is already active, refresh messages
                     if (document.getElementById('dashboard').classList.contains('active')) renderMessages();
                 } else {
                     alert('Invalid credentials.');
@@ -520,7 +526,7 @@
             renderComments();
         });
 
-        // ---------- CONTACT FORM (saves messages locally) ----------
+        // ---------- CONTACT FORM (saves locally) ----------
         function loadMessages() { return JSON.parse(localStorage.getItem('contact_messages') || '[]'); }
         function saveMessages(m) { localStorage.setItem('contact_messages', JSON.stringify(m)); }
         document.getElementById('contactForm').addEventListener('submit', function(e) {
@@ -535,6 +541,10 @@
             document.getElementById('contactSuccess').style.display = 'block';
             document.getElementById('contactForm').reset();
             setTimeout(() => { document.getElementById('contactSuccess').style.display = 'none'; }, 4000);
+            // ✅ Refresh dashboard if it's open (messages will appear immediately)
+            if (document.getElementById('dashboard').classList.contains('active')) {
+                renderMessages();
+            }
         });
 
         // ---------- ADMIN MESSAGES DISPLAY ----------
@@ -579,7 +589,7 @@
         document.getElementById('statProjects').textContent = loadProjects().length;
         document.getElementById('statComments').textContent = loadComments().length;
         document.getElementById('statBlog').textContent = loadBlog().length;
-        // Render messages (available only for admin on dashboard)
+        // Initial messages load (only visible on dashboard)
         renderMessages();
     </script>
 </body>
