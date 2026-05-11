@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shreejan Acharya · IT Officer</title>
     <meta name="description" content="Shreejan Acharya – IT Officer in Kathmandu, Nepal. Web Dev, IT Support, Networking, Web Apps.">
-    <meta name="keywords" content="IT officer, web development, IT support, networking, Kathmandu, Nepal, Shreejan Acharya">
     <meta property="og:title" content="Shreejan Acharya | IT Officer">
     <meta property="og:description" content="Web Dev · IT Support · Networking · Web Apps. Based in Kathmandu.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -48,7 +47,6 @@
             position: fixed; top:20px; left:50%; transform:translateX(-50%);
             width: calc(100% - 30px); max-width:1100px;
             background: rgba(18,18,28,0.5); backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
             border:1px solid var(--border); border-radius:60px;
             padding:0.6rem 1.5rem; z-index:1000; transition: background 0.3s;
         }
@@ -75,10 +73,8 @@
         .container {
             max-width:1000px; margin:120px auto 30px; width: calc(100% - 30px);
             background:var(--surface); backdrop-filter:blur(var(--blur));
-            -webkit-backdrop-filter:blur(var(--blur));
             border:1px solid var(--border); border-radius:var(--radius);
             padding:2rem; box-shadow:0 30px 50px rgba(0,0,0,0.3);
-            transition:background 0.3s;
         }
         .section { display:none; }
         .section.active { display:block; }
@@ -98,7 +94,7 @@
         .blog-card { background:rgba(255,255,255,0.03); border-radius:20px; padding:1.5rem; backdrop-filter:blur(12px); border:1px solid var(--border); }
         .comment-section { margin-top:2rem; background:rgba(255,255,255,0.02); backdrop-filter:blur(14px); border-radius:20px; padding:1.5rem; border:1px solid rgba(255,255,255,0.06); }
         .comment-item { background:rgba(255,255,255,0.04); border-radius:14px; padding:1rem; margin-bottom:0.7rem; border-left:3px solid var(--accent); backdrop-filter:blur(6px); }
-        .footer { background:var(--footer-bg); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-top:1px solid var(--border); padding:2rem; text-align:center; margin-top:3rem; color:var(--text-secondary); }
+        .footer { background:var(--footer-bg); backdrop-filter:blur(20px); border-top:1px solid var(--border); padding:2rem; text-align:center; margin-top:3rem; color:var(--text-secondary); }
         .footer .social-links a { color:var(--text-secondary); margin:0 0.8rem; font-size:1.4rem; transition:0.2s; }
         .footer .social-links a:hover { color:var(--accent); }
         #backToTop { position:fixed; bottom:25px; right:25px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:48px; height:48px; font-size:1.3rem; cursor:pointer; display:none; z-index:999; }
@@ -109,6 +105,7 @@
         .delete-btn { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffaaaa; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer; font-size:0.8rem; }
         .contact-form input, .contact-form textarea { width:100%; padding:0.8rem; margin-bottom:0.8rem; border-radius:12px; background:rgba(20,20,28,0.5); border:1px solid rgba(255,255,255,0.1); color:var(--text); font-family:inherit; }
         .contact-form textarea { resize:vertical; min-height:100px; }
+        .message-card { background:rgba(255,255,255,0.03); border-radius:16px; padding:1rem; margin-bottom:0.8rem; border-left:3px solid var(--accent); }
         @media (max-width:768px) {
             .hero-grid { grid-template-columns:1fr; }
             .nav-menu {
@@ -124,12 +121,6 @@
             .container { padding:1.5rem; }
             .hero-text h1 { font-size:2.2rem; }
             .contact-grid { grid-template-columns:1fr; }
-        }
-        @media (max-width:480px) {
-            .navbar { padding:0.5rem 1rem; top:10px; }
-            .nav-logo { font-size:1.2rem; }
-            .btn { padding:0.5rem 1rem; font-size:0.8rem; }
-            .hero-text h1 { font-size:1.8rem; }
         }
     </style>
 </head>
@@ -213,7 +204,7 @@
     <!-- PROJECTS -->
     <div id="projects" class="section container">
         <h2><i class="fas fa-folder-open" style="color:var(--accent);"></i> Projects</h2>
-        <div class="project-form" id="uploadForm" style="display:none; margin:1rem 0;">
+        <div id="uploadForm" style="display:none; margin:1rem 0;">
             <h3>Add Project</h3>
             <input type="text" id="projTitle" placeholder="Title" style="width:100%; margin-bottom:0.5rem; padding:0.7rem; border-radius:12px; background:rgba(20,20,28,0.5); border:1px solid rgba(255,255,255,0.1); color:var(--text);">
             <textarea id="projDesc" rows="2" placeholder="Description" style="width:100%; margin-bottom:0.5rem; padding:0.7rem; border-radius:12px; background:rgba(20,20,28,0.5); border:1px solid rgba(255,255,255,0.1); color:var(--text);"></textarea>
@@ -265,14 +256,21 @@
         </div>
     </div>
 
-    <!-- DASHBOARD -->
+    <!-- DASHBOARD (Admin only) -->
     <div id="dashboard" class="section container">
         <h2><i class="fas fa-tachometer-alt" style="color:var(--accent);"></i> Dashboard</h2>
-        <p>Admin only</p>
+        <p>Welcome, Shreejan! Here's an overview of your site's activity.</p>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px,1fr)); gap:0.8rem; margin:1rem 0;">
             <div class="tag">Projects: <strong id="statProjects">0</strong></div>
             <div class="tag">Comments: <strong id="statComments">0</strong></div>
             <div class="tag">Articles: <strong id="statBlog">0</strong></div>
+            <div class="tag">Messages: <strong id="statMessages">0</strong></div>
+        </div>
+        <div style="margin-top:2rem;">
+            <h3><i class="fas fa-envelope"></i> Received Messages</h3>
+            <div id="messagesContainer" style="max-height:500px; overflow-y:auto;">
+                <p id="noMessagesText">No messages yet.</p>
+            </div>
         </div>
     </div>
 
@@ -351,12 +349,10 @@
             document.getElementById('navMenu').classList.remove('active');
         }
 
-        // Mobile toggle
         document.getElementById('navToggle').addEventListener('click', ()=>{
             document.getElementById('navMenu').classList.toggle('active');
         });
 
-        // Back to top
         window.addEventListener('scroll', ()=>{
             document.getElementById('backToTop').classList.toggle('show', window.scrollY > 400);
         });
@@ -364,7 +360,6 @@
             window.scrollTo({top:0, behavior:'smooth'});
         });
 
-        // Update UI based on login
         function updateUI() {
             const user = getCurrentUser();
             document.getElementById('loginBtn').style.display = user ? 'none' : 'inline-flex';
@@ -419,6 +414,8 @@
                     alert('Login successful!');
                     closeLogin();
                     updateUI();
+                    // Refresh messages if dashboard is active
+                    if (document.getElementById('dashboard').classList.contains('active')) renderMessages();
                 } else {
                     alert('Invalid credentials.');
                 }
@@ -523,29 +520,58 @@
             renderComments();
         });
 
-        // ---------- CONTACT FORM (working) ----------
+        // ---------- CONTACT FORM (saves messages locally) ----------
+        function loadMessages() { return JSON.parse(localStorage.getItem('contact_messages') || '[]'); }
+        function saveMessages(m) { localStorage.setItem('contact_messages', JSON.stringify(m)); }
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('contactName').value.trim();
             const email = document.getElementById('contactEmail').value.trim();
             const message = document.getElementById('contactMessage').value.trim();
-            if (!name || !email || !message) {
-                alert('Please fill all fields.');
-                return;
-            }
-            // Save message to localStorage
-            const messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
+            if (!name || !email || !message) { alert('Please fill all fields.'); return; }
+            const messages = loadMessages();
             messages.push({ name, email, message, date: new Date().toLocaleString() });
-            localStorage.setItem('contact_messages', JSON.stringify(messages));
-            // Show success and clear form
+            saveMessages(messages);
             document.getElementById('contactSuccess').style.display = 'block';
             document.getElementById('contactForm').reset();
-            setTimeout(() => {
-                document.getElementById('contactSuccess').style.display = 'none';
-            }, 4000);
+            setTimeout(() => { document.getElementById('contactSuccess').style.display = 'none'; }, 4000);
         });
 
-        // Initial UI update & renders
+        // ---------- ADMIN MESSAGES DISPLAY ----------
+        function renderMessages() {
+            const msgContainer = document.getElementById('messagesContainer');
+            const noMsg = document.getElementById('noMessagesText');
+            const messages = loadMessages();
+            if (messages.length === 0) {
+                msgContainer.innerHTML = '';
+                msgContainer.appendChild(noMsg);
+                noMsg.style.display = 'block';
+            } else {
+                noMsg.style.display = 'none';
+                msgContainer.innerHTML = '';
+                messages.forEach((m, i) => {
+                    const card = document.createElement('div');
+                    card.className = 'message-card';
+                    card.innerHTML = `
+                        <strong>${m.name}</strong> (${m.email})<br>
+                        <small>${m.date}</small>
+                        <p>${m.message}</p>
+                        <button class="delete-btn" onclick="deleteMessage(${i})"><i class="fas fa-trash"></i> Delete</button>
+                    `;
+                    msgContainer.appendChild(card);
+                });
+            }
+            document.getElementById('statMessages').textContent = messages.length;
+        }
+        window.deleteMessage = function(i) {
+            if (!confirm('Delete this message?')) return;
+            const messages = loadMessages();
+            messages.splice(i, 1);
+            saveMessages(messages);
+            renderMessages();
+        };
+
+        // ---------- INITIAL RENDER & UI UPDATE ----------
         updateUI();
         renderProjects();
         renderBlog();
@@ -553,6 +579,8 @@
         document.getElementById('statProjects').textContent = loadProjects().length;
         document.getElementById('statComments').textContent = loadComments().length;
         document.getElementById('statBlog').textContent = loadBlog().length;
+        // Render messages (available only for admin on dashboard)
+        renderMessages();
     </script>
 </body>
 </html>
