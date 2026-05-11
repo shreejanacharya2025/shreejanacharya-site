@@ -46,73 +46,90 @@
         }
         .navbar {
             position: fixed; top:20px; left:50%; transform:translateX(-50%);
-            width: calc(100% - 40px); max-width:1100px;
+            width: calc(100% - 30px); max-width:1100px;
             background: rgba(18,18,28,0.5); backdrop-filter: blur(25px);
             -webkit-backdrop-filter: blur(25px);
             border:1px solid var(--border); border-radius:60px;
-            padding:0.7rem 2rem; z-index:1000; transition: background 0.3s;
+            padding:0.6rem 1.5rem; z-index:1000; transition: background 0.3s;
         }
         body.light-mode .navbar { background: rgba(255,255,255,0.6); }
-        .nav-container { display:flex; justify-content:space-between; align-items:center; }
-        .nav-logo { font-size:1.6rem; font-weight:700; color:var(--text); text-decoration:none; display:flex; align-items:center; gap:8px; }
+        .nav-container { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+        .nav-logo { font-size:1.4rem; font-weight:700; color:var(--text); text-decoration:none; display:flex; align-items:center; gap:6px; }
         .logo-dot { color:var(--accent); }
-        .nav-menu { display:flex; list-style:none; gap:2rem; background:rgba(255,255,255,0.03); padding:0.5rem 1.8rem; border-radius:40px; backdrop-filter:blur(10px); align-items:center; }
-        .nav-link { color:var(--text-secondary); text-decoration:none; font-weight:500; font-size:0.95rem; padding:0.3rem 0; border-bottom:2px solid transparent; transition:0.2s; cursor:pointer; background:none; border-left:none; border-right:none; border-top:none; font-family:inherit; }
+        .nav-menu { display:flex; list-style:none; gap:1.2rem; background:rgba(255,255,255,0.03); padding:0.4rem 1.2rem; border-radius:40px; backdrop-filter:blur(10px); align-items:center; flex-wrap:wrap; }
+        .nav-link { color:var(--text-secondary); text-decoration:none; font-weight:500; font-size:0.9rem; padding:0.3rem 0; border-bottom:2px solid transparent; transition:0.2s; cursor:pointer; background:none; border-left:none; border-right:none; border-top:none; font-family:inherit; }
         .nav-link.active, .nav-link:hover { color:var(--text); border-bottom-color:var(--accent); }
         .nav-toggle { display:none; flex-direction:column; cursor:pointer; }
         .bar { width:25px; height:2px; background:var(--text); margin:4px 0; border-radius:5px; }
         .btn {
-            display:inline-flex; align-items:center; gap:8px;
+            display:inline-flex; align-items:center; gap:6px;
             background:rgba(255,255,255,0.08); backdrop-filter:blur(10px);
             border:1px solid rgba(255,255,255,0.15); color:var(--text);
-            padding:0.7rem 1.8rem; border-radius:40px; font-weight:500;
+            padding:0.6rem 1.4rem; border-radius:40px; font-weight:500;
             text-decoration:none; transition:all 0.2s; cursor:pointer;
-            font-family:inherit; font-size:0.95rem;
+            font-family:inherit; font-size:0.9rem; white-space:nowrap;
         }
         .btn-primary { background:var(--accent); border-color:var(--accent); color:#fff; }
         .btn:hover { background:rgba(255,255,255,0.15); }
         .btn-primary:hover { background:var(--accent-light); }
         .container {
-            max-width:1000px; margin:120px auto 40px;
+            max-width:1000px; margin:120px auto 30px; width: calc(100% - 30px);
             background:var(--surface); backdrop-filter:blur(var(--blur));
             -webkit-backdrop-filter:blur(var(--blur));
             border:1px solid var(--border); border-radius:var(--radius);
-            padding:2.8rem 2.5rem; box-shadow:0 30px 50px rgba(0,0,0,0.3);
+            padding:2rem; box-shadow:0 30px 50px rgba(0,0,0,0.3);
             transition:background 0.3s;
         }
         .section { display:none; }
         .section.active { display:block; }
         h1,h2,h3 { color:var(--text); font-weight:600; }
-        .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:2.5rem; align-items:center; }
-        .hero-text h1 { font-size:3.2rem; line-height:1.2; }
+        .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:center; }
+        .hero-text h1 { font-size:2.8rem; line-height:1.2; }
         .highlight { background:linear-gradient(135deg, var(--accent), #c084fc); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-        .avatar { width:160px; height:160px; background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:4rem; border:1px solid rgba(255,255,255,0.15); }
-        .service-tags { display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1.8rem; }
-        .tag { background:rgba(255,255,255,0.07); backdrop-filter:blur(8px); padding:0.5rem 1.2rem; border-radius:30px; font-size:0.9rem; border:1px solid rgba(255,255,255,0.1); cursor:pointer; color:var(--text); text-decoration:none; transition:0.2s; }
+        .avatar { width:140px; height:140px; background:rgba(255,255,255,0.04); backdrop-filter:blur(12px); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:3.5rem; border:1px solid rgba(255,255,255,0.15); }
+        .service-tags { display:flex; flex-wrap:wrap; gap:0.5rem; margin-top:1.2rem; }
+        .tag { background:rgba(255,255,255,0.07); backdrop-filter:blur(8px); padding:0.5rem 1rem; border-radius:30px; font-size:0.85rem; border:1px solid rgba(255,255,255,0.1); cursor:pointer; color:var(--text); text-decoration:none; transition:0.2s; display:inline-block; }
         .tag:hover { background:var(--accent); border-color:var(--accent); }
-        .services-section { margin-top:4rem; }
-        .service-item { background:rgba(255,255,255,0.03); border-radius:20px; padding:2rem; margin-bottom:2rem; backdrop-filter:blur(12px); border:1px solid var(--border); display:flex; gap:2rem; align-items:center; }
-        .service-item img { width:200px; height:160px; object-fit:cover; border-radius:16px; }
-        .blog-grid { display:grid; gap:2rem; margin-top:2rem; }
-        .blog-card { background:rgba(255,255,255,0.03); border-radius:20px; padding:2rem; backdrop-filter:blur(12px); border:1px solid var(--border); }
-        .comment-section { margin-top:2.5rem; background:rgba(255,255,255,0.02); backdrop-filter:blur(14px); border-radius:20px; padding:1.8rem; border:1px solid rgba(255,255,255,0.06); }
-        .comment-item { background:rgba(255,255,255,0.04); border-radius:14px; padding:1rem; margin-bottom:0.8rem; border-left:3px solid var(--accent); backdrop-filter:blur(6px); }
-        .footer { background:var(--footer-bg); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-top:1px solid var(--border); padding:2rem; text-align:center; margin-top:4rem; color:var(--text-secondary); }
+        .services-section { margin-top:3rem; }
+        .service-item { background:rgba(255,255,255,0.03); border-radius:20px; padding:1.8rem; margin-bottom:1.5rem; backdrop-filter:blur(12px); border:1px solid var(--border); display:flex; gap:1.5rem; align-items:center; flex-wrap:wrap; }
+        .service-item img { width:180px; height:140px; object-fit:cover; border-radius:16px; max-width:100%; }
+        .service-item div { flex:1; min-width:200px; }
+        .blog-grid { display:grid; gap:1.5rem; margin-top:1.5rem; }
+        .blog-card { background:rgba(255,255,255,0.03); border-radius:20px; padding:1.5rem; backdrop-filter:blur(12px); border:1px solid var(--border); }
+        .comment-section { margin-top:2rem; background:rgba(255,255,255,0.02); backdrop-filter:blur(14px); border-radius:20px; padding:1.5rem; border:1px solid rgba(255,255,255,0.06); }
+        .comment-item { background:rgba(255,255,255,0.04); border-radius:14px; padding:1rem; margin-bottom:0.7rem; border-left:3px solid var(--accent); backdrop-filter:blur(6px); }
+        .footer { background:var(--footer-bg); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); border-top:1px solid var(--border); padding:2rem; text-align:center; margin-top:3rem; color:var(--text-secondary); }
         .footer .social-links a { color:var(--text-secondary); margin:0 0.8rem; font-size:1.4rem; transition:0.2s; }
         .footer .social-links a:hover { color:var(--accent); }
-        #backToTop { position:fixed; bottom:30px; right:30px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:50px; height:50px; font-size:1.4rem; cursor:pointer; display:none; z-index:999; }
+        #backToTop { position:fixed; bottom:25px; right:25px; background:var(--accent); color:#fff; border:none; border-radius:50%; width:48px; height:48px; font-size:1.3rem; cursor:pointer; display:none; z-index:999; }
         #backToTop.show { display:block; }
         .modal-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); backdrop-filter:blur(12px); display:none; align-items:center; justify-content:center; z-index:2000; }
-        .modal { background:var(--surface); backdrop-filter:blur(30px); border:1px solid var(--border); border-radius:24px; padding:2.5rem; width:90%; max-width:400px; color:var(--text); }
-        .modal input { width:100%; padding:0.9rem; margin:0.7rem 0; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; color:var(--text); }
-        .delete-btn { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffaaaa; padding:0.3rem 1rem; border-radius:20px; cursor:pointer; }
+        .modal { background:var(--surface); backdrop-filter:blur(30px); border:1px solid var(--border); border-radius:24px; padding:2rem; width:90%; max-width:400px; color:var(--text); }
+        .modal input { width:100%; padding:0.8rem; margin:0.6rem 0; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:14px; color:var(--text); }
+        .delete-btn { background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffaaaa; padding:0.3rem 0.8rem; border-radius:20px; cursor:pointer; font-size:0.8rem; }
+        .contact-form input, .contact-form textarea { width:100%; padding:0.8rem; margin-bottom:0.8rem; border-radius:12px; background:rgba(20,20,28,0.5); border:1px solid rgba(255,255,255,0.1); color:var(--text); font-family:inherit; }
+        .contact-form textarea { resize:vertical; min-height:100px; }
         @media (max-width:768px) {
             .hero-grid { grid-template-columns:1fr; }
-            .nav-menu { position:fixed; left:-100%; top:90px; flex-direction:column; background:rgba(15,15,20,0.8); backdrop-filter:blur(30px); width:100%; padding:2rem; transition:0.3s; border-radius:0; }
+            .nav-menu {
+                position:fixed; left:-100%; top:80px; flex-direction:column;
+                background:rgba(15,15,20,0.8); backdrop-filter:blur(30px);
+                width:100%; padding:2rem; transition:0.3s; border-radius:0;
+                gap:1rem; align-items:flex-start;
+            }
             .nav-menu.active { left:0; }
             .nav-toggle { display:flex; }
             .service-item { flex-direction:column; }
-            .service-item img { width:100%; }
+            .service-item img { width:100%; height:auto; }
+            .container { padding:1.5rem; }
+            .hero-text h1 { font-size:2.2rem; }
+            .contact-grid { grid-template-columns:1fr; }
+        }
+        @media (max-width:480px) {
+            .navbar { padding:0.5rem 1rem; top:10px; }
+            .nav-logo { font-size:1.2rem; }
+            .btn { padding:0.5rem 1rem; font-size:0.8rem; }
+            .hero-text h1 { font-size:1.8rem; }
         }
     </style>
 </head>
@@ -128,9 +145,9 @@
                 <li><button class="nav-link" onclick="showSection('contact')">Contact</button></li>
                 <li id="dashboardLi" style="display:none;"><button class="nav-link" onclick="showSection('dashboard')">Dashboard</button></li>
             </ul>
-            <div style="display:flex; align-items:center;">
+            <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
                 <button id="darkModeToggle" class="btn"><i class="fas fa-moon"></i> Dark</button>
-                <button id="loginBtn" class="btn" style="margin-left:0.5rem;" onclick="openLogin()"><i class="fas fa-sign-in-alt"></i> Login</button>
+                <button id="loginBtn" class="btn" onclick="openLogin()"><i class="fas fa-sign-in-alt"></i> Login</button>
                 <button id="logoutBtn" class="btn" style="display:none;" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</button>
                 <div class="nav-toggle" id="navToggle"><span class="bar"></span><span class="bar"></span><span class="bar"></span></div>
             </div>
@@ -143,8 +160,8 @@
             <div class="hero-text">
                 <span class="tag">IT Officer & Developer</span>
                 <h1>Hello, I'm <span class="highlight">Shreejan Acharya</span></h1>
-                <p style="color:var(--text-secondary); margin:1.5rem 0;">Web Dev · IT Support · Networking · Web Apps<br>Based in Kathmandu, Nepal 🇳🇵</p>
-                <div style="display:flex; gap:1rem;">
+                <p style="color:var(--text-secondary); margin:1rem 0;">Web Dev · IT Support · Networking · Web Apps<br>Based in Kathmandu, Nepal 🇳🇵</p>
+                <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
                     <button class="btn btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'});"><i class="fas fa-briefcase"></i> My Services</button>
                     <button class="btn" onclick="showSection('contact')"><i class="fas fa-paper-plane"></i> Hire Me</button>
                 </div>
@@ -158,7 +175,7 @@
             <div class="hero-image"><div class="avatar"><i class="fas fa-user-astronaut"></i></div></div>
         </div>
         <div class="services-section" id="services">
-            <h2 style="margin-bottom:2rem;"><i class="fas fa-tools" style="color:var(--accent);"></i> What I Do</h2>
+            <h2 style="margin-bottom:1.5rem;"><i class="fas fa-tools" style="color:var(--accent);"></i> What I Do</h2>
             <div class="service-item" id="web-dev">
                 <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=400&fit=crop" alt="Web Development">
                 <div><h3>Web Development</h3><p>Custom responsive websites, landing pages, and full‑stack solutions using HTML, CSS, JavaScript, React, and modern frameworks. I build fast, accessible, and visually appealing websites tailored to your brand.</p></div>
@@ -169,7 +186,7 @@
             </div>
             <div class="service-item" id="networking">
                 <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&fit=crop" alt="Networking">
-                <div><h3>Networking</h3><p>Design and configuration of LAN/WAN networks, security firewalls, VPNs and cloud networking. Certified in Cisco and MikroTik technologies to keep your data safe and flowing. i can also heps on set floor plan and API`s.</p></div>
+                <div><h3>Networking</h3><p>Design and configuration of LAN/WAN networks, security firewalls, VPNs, and cloud networking. Certified in Cisco and MikroTik technologies to keep your data safe and flowing.</p></div>
             </div>
             <div class="service-item" id="web-apps">
                 <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&fit=crop" alt="Web Applications">
@@ -181,18 +198,13 @@
     <!-- ABOUT -->
     <div id="about" class="section container">
         <h2><i class="fas fa-user-circle" style="color:var(--accent);"></i> About Me</h2>
-        <p style="margin:1.5rem 0; color:var(--text-secondary);">I'm <strong>Shreejan Acharya</strong> Here’s a warm, easy‑to‑read one‑paragraph version:
-
----
-
-I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely love helping people make technology work for them. Whether you need a beautiful website, someone to fix your network headaches, or a custom web tool that saves you hours each day, I’m here to guide you with simple, honest advice and reliable hands‑on work. I believe technology should feel friendly, not frustrating, so I always explain things in plain language and build solutions that are easy for you to manage. My goal isn’t just to complete a job – it’s to leave you feeling confident, supported, and truly happy with the result. Let’s create something great together.
-        </p>
+        <p style="margin:1rem 0; color:var(--text-secondary);">I'm Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely love helping people make technology work for them. Whether you need a beautiful website, someone to fix your network headaches, or a custom web tool that saves you hours each day, I'm here to guide you with simple, honest advice and reliable hands‑on work. I believe technology should feel friendly, not frustrating, so I always explain things in plain language and build solutions that are easy for you to manage. My goal isn't just to complete a job – it's to leave you feeling confident, supported, and truly happy with the result. Let's create something great together.</p>
         <div class="comment-section">
             <h3><i class="far fa-comments"></i> Comments</h3>
             <div id="commentsList"></div>
-            <div style="display:flex; gap:0.8rem; margin-top:1.5rem; flex-wrap:wrap;">
-                <input type="text" id="commentName" placeholder="Your name" style="flex:1; background:rgba(20,20,28,0.5); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.1); border-radius:30px; padding:0.7rem 1.2rem; color:var(--text);">
-                <input type="text" id="commentMsg" placeholder="Write a comment..." style="flex:2; background:rgba(20,20,28,0.5); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.1); border-radius:30px; padding:0.7rem 1.2rem; color:var(--text);">
+            <div style="display:flex; gap:0.5rem; margin-top:1rem; flex-wrap:wrap;">
+                <input type="text" id="commentName" placeholder="Your name" style="flex:1; min-width:120px; background:rgba(20,20,28,0.5); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.1); border-radius:30px; padding:0.7rem 1rem; color:var(--text);">
+                <input type="text" id="commentMsg" placeholder="Write a comment..." style="flex:2; min-width:180px; background:rgba(20,20,28,0.5); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.1); border-radius:30px; padding:0.7rem 1rem; color:var(--text);">
                 <button class="btn btn-primary" id="postCommentBtn"><i class="fas fa-paper-plane"></i> Post</button>
             </div>
         </div>
@@ -201,12 +213,12 @@ I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely
     <!-- PROJECTS -->
     <div id="projects" class="section container">
         <h2><i class="fas fa-folder-open" style="color:var(--accent);"></i> Projects</h2>
-        <div class="project-form" id="uploadForm" style="display:none;">
-            <h3><i class="fas fa-cloud-upload-alt"></i> Add Project</h3>
-            <input type="text" id="projTitle" placeholder="Title"><br>
-            <textarea id="projDesc" rows="2" placeholder="Description"></textarea><br>
-            <input type="text" id="projImage" placeholder="Image URL (optional)"><br>
-            <input type="text" id="projZip" placeholder="ZIP URL (optional)"><br>
+        <div class="project-form" id="uploadForm" style="display:none; margin:1rem 0;">
+            <h3>Add Project</h3>
+            <input type="text" id="projTitle" placeholder="Title" style="width:100%; margin-bottom:0.5rem; padding:0.7rem; border-radius:12px; background:rgba(20,20,28,0.5); border:1px solid rgba(255,255,255,0.1); color:var(--text);">
+            <textarea id="projDesc" rows="2" placeholder="Description" style="width:100%; margin-bottom:0.5rem; padding:0.7rem; border-radius:12px; background:rgba(20,20,28,0.5); border:1px solid rgba(255,255,255,0.1); color:var(--text);"></textarea>
+            <input type="text" id="projImage" placeholder="Image URL (optional)" style="width:100%; margin-bottom:0.5rem; padding:0.7rem; border-radius:12px; background:rgba(20,20,28,0.5); border:1px solid rgba(255,255,255,0.1); color:var(--text);">
+            <input type="text" id="projZip" placeholder="ZIP URL (optional)" style="width:100%; margin-bottom:0.5rem; padding:0.7rem; border-radius:12px; background:rgba(20,20,28,0.5); border:1px solid rgba(255,255,255,0.1); color:var(--text);">
             <button class="btn btn-primary" id="addProjectBtn">Add Project</button>
         </div>
         <div id="projectsContainer"></div>
@@ -215,9 +227,9 @@ I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely
     <!-- BLOG -->
     <div id="blog" class="section container">
         <h2><i class="fas fa-blog" style="color:var(--accent);"></i> Articles</h2>
-        <div id="blogForm" style="display:none; margin-bottom:2rem;">
-            <input type="text" id="blogTitle" placeholder="Title"><br>
-            <textarea id="blogContent" rows="5" placeholder="Content"></textarea><br>
+        <div id="blogForm" style="display:none; margin:1rem 0;">
+            <input type="text" id="blogTitle" placeholder="Title" style="width:100%; margin-bottom:0.5rem; padding:0.7rem; border-radius:12px; background:rgba(20,20,28,0.5); border:1px solid rgba(255,255,255,0.1); color:var(--text);">
+            <textarea id="blogContent" rows="5" placeholder="Content" style="width:100%; margin-bottom:0.5rem; padding:0.7rem; border-radius:12px; background:rgba(20,20,28,0.5); border:1px solid rgba(255,255,255,0.1); color:var(--text);"></textarea>
             <button class="btn btn-primary" id="addBlogBtn">Publish</button>
         </div>
         <div id="blogContainer"></div>
@@ -226,15 +238,16 @@ I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely
     <!-- CONTACT -->
     <div id="contact" class="section container">
         <h2><i class="fas fa-address-card" style="color:var(--accent);"></i> Contact</h2>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+        <div class="contact-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-top:1.5rem;">
             <div>
                 <h3>Send a Message</h3>
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                    <input type="text" name="name" placeholder="Name" required><br>
-                    <input type="email" name="email" placeholder="Email" required><br>
-                    <textarea name="message" rows="5" placeholder="Message" required></textarea><br>
-                    <button type="submit" class="btn btn-primary">Send</button>
+                <form id="contactForm" class="contact-form">
+                    <input type="text" id="contactName" placeholder="Your Name" required>
+                    <input type="email" id="contactEmail" placeholder="Your Email" required>
+                    <textarea id="contactMessage" placeholder="Your Message" required></textarea>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Message</button>
                 </form>
+                <p id="contactSuccess" style="color:var(--accent); margin-top:0.5rem; display:none;">✅ Message sent successfully! I'll get back to you soon.</p>
             </div>
             <div>
                 <h3>Direct Contact</h3>
@@ -242,7 +255,7 @@ I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely
                 <p><i class="fas fa-phone-alt"></i> +977 - 9845277740</p>
                 <p><i class="fas fa-envelope"></i> aacharyashreejan@gmail.com</p>
                 <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
-                <div style="margin-top:1.5rem;">
+                <div style="margin-top:1rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
                     <a href="https://wa.me/9779818864360" target="_blank" class="btn"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                     <a href="https://www.facebook.com/shreejan.fb/about/" target="_blank" class="btn"><i class="fab fa-facebook"></i></a>
                     <a href="https://www.instagram.com/shreejan.acharya" target="_blank" class="btn"><i class="fab fa-instagram"></i></a>
@@ -256,7 +269,7 @@ I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely
     <div id="dashboard" class="section container">
         <h2><i class="fas fa-tachometer-alt" style="color:var(--accent);"></i> Dashboard</h2>
         <p>Admin only</p>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px,1fr)); gap:1rem; margin:1.5rem 0;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px,1fr)); gap:0.8rem; margin:1rem 0;">
             <div class="tag">Projects: <strong id="statProjects">0</strong></div>
             <div class="tag">Comments: <strong id="statComments">0</strong></div>
             <div class="tag">Articles: <strong id="statBlog">0</strong></div>
@@ -271,7 +284,7 @@ I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely
             <a href="https://np.linkedin.com/in/shreejan-acharya-107779344" target="_blank"><i class="fab fa-linkedin"></i></a>
             <a href="mailto:aacharyashreejan@gmail.com"><i class="fas fa-envelope"></i></a>
         </div>
-        <p style="margin-top:1rem;">&copy; 2025 Shreejan Acharya. All rights reserved.</p>
+        <p style="margin-top:0.8rem;">&copy; 2025 Shreejan Acharya. All rights reserved.</p>
     </footer>
 
     <button id="backToTop" title="Back to top"><i class="fas fa-arrow-up"></i></button>
@@ -285,17 +298,16 @@ I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely
             <input type="email" id="email" placeholder="Email">
             <input type="password" id="password" placeholder="Password">
             <button class="btn btn-primary" id="submitAuth" style="width:100%;">Sign In</button>
-            <p style="text-align:center; margin-top:1rem; cursor:pointer;" id="toggleFormLink">Don't have an account? <span style="color:var(--accent);">Sign Up</span></p>
-            <p style="text-align:center; font-size:0.8rem;">having trouble?   send e-mail on : aacharyashreejan@gmail.com </p>
+            <p style="text-align:center; margin-top:0.8rem; cursor:pointer;" id="toggleFormLink">Don't have an account? <span style="color:var(--accent);">Sign Up</span></p>
+            <p style="text-align:center; font-size:0.8rem;">Admin: shreejan.acharya2025@gmail.com / 6969</p>
         </div>
     </div>
 
     <script>
         // ---------- GLOBAL STATE ----------
         const ADMIN_EMAIL = "shreejan.acharya2025@gmail.com";
-        const ADMIN_PASSWORD = "password6969";
+        const ADMIN_PASSWORD = "6969";
 
-        // Ensure admin exists
         (function() {
             let users = JSON.parse(localStorage.getItem('site_users') || '[]');
             if (!users.some(u => u.email === ADMIN_EMAIL)) {
@@ -333,7 +345,8 @@ I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            document.querySelector(`.nav-link[onclick="showSection('${id}')"]`)?.classList.add('active');
+            const targetLink = document.querySelector(`.nav-link[onclick="showSection('${id}')"]`);
+            if (targetLink) targetLink.classList.add('active');
             window.scrollTo({top:0, behavior:'smooth'});
             document.getElementById('navMenu').classList.remove('active');
         }
@@ -426,7 +439,6 @@ I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely
             if (projects.length===0) { container.innerHTML = '<p>No projects yet.</p>'; return; }
             projects.forEach((p, i) => {
                 const card = document.createElement('div');
-                card.className = 'project-card';
                 card.style.cssText = 'background:rgba(35,35,50,0.4); backdrop-filter:blur(12px); border-radius:20px; padding:1.2rem; margin-bottom:1rem;';
                 card.innerHTML = `
                     <h3>${p.title}</h3>
@@ -511,12 +523,33 @@ I’m Shreejan Acharya, an IT Officer based in Kathmandu, Nepal, and I genuinely
             renderComments();
         });
 
-        // Initial render & UI update
+        // ---------- CONTACT FORM (working) ----------
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value.trim();
+            const email = document.getElementById('contactEmail').value.trim();
+            const message = document.getElementById('contactMessage').value.trim();
+            if (!name || !email || !message) {
+                alert('Please fill all fields.');
+                return;
+            }
+            // Save message to localStorage
+            const messages = JSON.parse(localStorage.getItem('contact_messages') || '[]');
+            messages.push({ name, email, message, date: new Date().toLocaleString() });
+            localStorage.setItem('contact_messages', JSON.stringify(messages));
+            // Show success and clear form
+            document.getElementById('contactSuccess').style.display = 'block';
+            document.getElementById('contactForm').reset();
+            setTimeout(() => {
+                document.getElementById('contactSuccess').style.display = 'none';
+            }, 4000);
+        });
+
+        // Initial UI update & renders
         updateUI();
         renderProjects();
         renderBlog();
         renderComments();
-        // Dashboard stats
         document.getElementById('statProjects').textContent = loadProjects().length;
         document.getElementById('statComments').textContent = loadComments().length;
         document.getElementById('statBlog').textContent = loadBlog().length;
